@@ -3,7 +3,7 @@ import db from "./connectDb.js";
 db.transaction((tx) => {
 
   tx.executeSql(
-    "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, age INT);"
+    "CREATE TABLE IF NOT EXISTS produtos (id INTEGER PRIMARY KEY AUTOINCREMENT, nomeproduto TEXT, valor INT);"
   );
   
 });
@@ -13,8 +13,8 @@ const create = (obj) => {
     db.transaction((tx) => {
       //comando SQL modificável
       tx.executeSql(
-        "INSERT INTO users (name, age) values (?, ?);",
-        [obj.name, obj.age],
+        "INSERT INTO produtos (nomeproduto, valor) values (?, ?);",
+        [obj.nomeProduto, obj.valor],
         //-----------------------
         (_, { rowsAffected, insertId }) => {
           if (rowsAffected > 0) resolve(insertId);
@@ -30,7 +30,7 @@ const findAll = () => {
     db.transaction((tx) => {
       //comando SQL modificável
       tx.executeSql(
-        "SELECT * FROM users;",
+        "SELECT * FROM produtos;",
         [],
         //-----------------------
         (_, { rows }) => resolve(rows._array),
@@ -45,7 +45,7 @@ const removeAll = () => {
     db.transaction((tx) => {
       //comando SQL modificável
       tx.executeSql(
-        "DELETE FROM users",
+        "DELETE FROM produtos",
         //-----------------------
         (_, { rowsAffected }) => {
           resolve(rowsAffected);

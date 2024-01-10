@@ -1,7 +1,7 @@
 import { View, Text } from "react-native-web";
 
 export default function Consultar(){
-    const lista = [
+    /*const lista = [
         {
             nomeP:'camiseta',
             valor:'100'
@@ -15,13 +15,24 @@ export default function Consultar(){
             valor:'50'
         }
 ];
+
+
+ {lista?.map((roupas)=>
+
+        <View>
+         <Text>
+          {roupas.nomeP} {roupas.valor}
+         </Text>
+        </View>
+       
+        )}
+
+
+*/
     return(
     <View>
-        {lista?.map((roupas)=>
-        <Text>
-        {roupas.nomeP} {roupas.valor}
-        </Text>
-        )}
+      
+
     </View>
     )
 };
