@@ -11,7 +11,7 @@ export default function App(){
     <NavigationContainer>
       <Stack.Navigator inititalRouteName = "casa">
        <Stack.Screen name="CASA" component={Casa}></Stack.Screen>
-       <Stack.Screen name="Consultar" component={Consulta}></Stack.Screen>
+       <Stack.Screen name="Consultar" component={Consulta} ></Stack.Screen>
        <Stack.Screen name="Cadastrar" component={Cadastrar}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
@@ -19,7 +19,21 @@ export default function App(){
 
   )
 };
-    /*<View style={inicio.container}>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*<View style={inicio.container}>
       <Text style={inicio.paragrafo}>Ola mundo 40%</Text>
       <Text style={meio.paragrafo}>Meu nome e Leonardo 70%</Text>
       <Text style={fim.paragrafo}>Faço o curso de info 100%</Text>
