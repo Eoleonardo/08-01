@@ -3,7 +3,7 @@ import db from "./connectDb.js";
 db.transaction((tx) => {
 
   tx.executeSql(
-    "CREATE TABLE IF NOT EXISTS produtos (id INTEGER PRIMARY KEY AUTOINCREMENT, nomeproduto TEXT, valor INT);"
+    "CREATE TABLE IF NOT EXISTS produtos (id INTEGER PRIMARY KEY AUTOINCREMENT, nome_produto TEXT, valor INT);"
   );
   
 });
@@ -13,8 +13,8 @@ const create = (obj) => {
     db.transaction((tx) => {
       //comando SQL modificável
       tx.executeSql(
-        "INSERT INTO produtos (nomeproduto, valor) values (?, ?);",
-        [obj.nomeProduto, obj.valor],
+        "INSERT INTO produtos (nome_produto, valor) values (?, ?);",
+        [obj.nome_produto, obj.valor],
         //-----------------------
         (_, { rowsAffected, insertId }) => {
           if (rowsAffected > 0) resolve(insertId);
