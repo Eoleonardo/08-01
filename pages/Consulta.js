@@ -1,38 +1,41 @@
-import { View, Text } from "react-native-web";
+import { Text, StyleSheet, SafeAreaView } from "react-native";
+import { Card } from 'react-native-paper';
+import { useState, useEffect } from "react";
+import Produto from "../services/Produto";
 
-export default function Consultar(){
-    /*const lista = [
-        {
-            nomeP:'camiseta',
-            valor:'100'
-        },
-        {
-            nomeP:'calca',
-            valor:'200'
-        },
-        {
-            nomeP:'bone',
-            valor:'50'
+export default function Consultar() {
+    const [produtos, setProdutos] = useState([]);
+
+    useEffect(() => {
+        const buscar = async () => {
+            const lista = await Produto.findAll();
+            setProdutos(lista);
         }
-];
+        buscar();
+    }, [])
 
-
- {lista?.map((roupas)=>
-
-        <View>
-         <Text>
-          {roupas.nomeP} {roupas.valor}
-         </Text>
-        </View>
-       
-        )}
-
-
-*/
-    return(
-    <View>
-      
-
-    </View>
-    )
-};
+    return (
+    <SafeAreaView style={styles.container}>
+        { produtos?.map((pdt)=> (
+            <Card key={pdt.id}>
+                <Text style={styles.paragraph}>{pdt.nome_produto}</Text>
+                <Text style={styles.paragraph}>{pdt.valor}</Text>
+            </Card>
+        ))}
+    </SafeAreaView>
+    );
+}
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: '#ecf0f1',
+        padding: 8,
+    },
+    paragraph: {
+        margin: 24,
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+});

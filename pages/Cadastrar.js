@@ -1,30 +1,32 @@
-import { SafeAreaView, TextInput, Button } from "react-native";
+import { SafeAreaView, TextInput, Button, StyleSheet } from "react-native";
 import Produto from "../services/Produto";
 import { useState } from "react";
+import { Card } from 'react-native-paper';
 
 export default function Cadastrar(){
-    const [produto, setProduto] = useState({
-        nomeProduto:'Pão',
+    const [produtos, setProdutos] = useState({
+       nome_produto: 'Pão',
         valor: 10
     });
     const cadastrar = () => {
-        Produto.create(produto);
+        Produto.create(produtos);
     }
    
     return(
   <SafeAreaView style={styles.container}>
-    <Card.container>
+    <Card.Content>
            <TextInput
-            value={produto.nomeProduto}
+           
             onChange={(texto)=> 
-            {setProduto({...produto, nomeProduto: texto})}}/>
+            {setProdutos({...produtos, nome_produto: texto})}}></TextInput>
 
            <TextInput
-            value={produto.valor}
+           
             onChange={(texto)=> 
-            {setProduto({...produto, valor: texto})}}/>
+            {setProdutos({...produtos, valor: texto})}}></TextInput>
+            
        <Button title="cadastrar" onPress={cadastrar}>SALVAR</Button>
-    </Card.container>
+    </Card.Content>
   </SafeAreaView>
     )
 }
